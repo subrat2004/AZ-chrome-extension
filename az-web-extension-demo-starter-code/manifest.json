@@ -39,6 +39,6 @@
       "32": "assets/ext-icon.png"
     },
     "default_title": "AZ Todo Problems",
-    "default_popup": "popup.html"
+    "default_popup": "index.html"
   }
 }
