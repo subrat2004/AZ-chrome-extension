@@ -6,6 +6,7 @@
 // Description: Handles all the webpage level activities (e.g. manipulating page data, etc.)
 // License: MIT
 let newbookmark=window.location.href;
+let problemlist='algozenith_problems';
 window.addEventListener("load",()=>{addbookmark()});
 function addbookmark(){
     let addimage=document.createElement("img");
@@ -19,7 +20,31 @@ function addbookmark(){
 )[0].parentElement.parentElement;
 azAskDoubt.appendChild(bookmarkBtn);
 addimage.addEventListener("click",newbookmark())
+} let location=window.location.href;
+async function newbookmark(){
+    currentbookmark=await fetchbookmark();
+    problemname=document.getElementsByClassName("col-8 my-auto")[0].lastChild.textContent;
+    const bookmarkcontainer={
+        url: location,
+        desc: problemname,
+    };
+    let addornot=true;
+    for (let i = 0;i<currentbookmark.length; i++) {
+    if(currentbookmark[i].url==location){
+        addornot=false;
+    }
+    } if(addornot){
+        chrome.storage.sync.get({
+  [problemlist]: JSON.stringify([
+    ...currentbookmark,bookmarkcontainer,
+  ])
+        })
+    }; 
 }
-function newbookmark(){
-
+const fetchbookmark=()=>{
+    return new Promise((resolve)=>{
+        chrome.storage.sync.get([problemlist],(obj)=>{
+           ( resolve(obj[problemlist]?JSON.parse(obj[problemlist]):[]));
+        })
+    })
 }
