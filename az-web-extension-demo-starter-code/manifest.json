@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "AZ Todo Problems",
   "version": "0.1",
-  "author": "subrat",
-  "description": "This extension will help you to create a todo list for your problems.",
+  "author": "Subrat",
+  "description": "This extension will help you take notes of problems",
   "permissions": [
     "storage",
     "tabs"
@@ -24,10 +24,10 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "bookmark.png",
-        "play.png",
-        "delete.png",
-        "save.png"
+        "assets/bookmark.png",
+        "assets/play.png",
+        "assets/delete.png",
+        "assets/save.png"
       ],
       "matches":["<all_urls>"]
     }
@@ -39,6 +39,6 @@
       "32": "assets/ext-icon.png"
     },
     "default_title": "AZ Todo Problems",
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   }
 }
